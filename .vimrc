@@ -34,5 +34,6 @@ set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 set autoread   "外部でファイルに変更がされた場合は読みなおす
+set noundofile "undofileを作らない
 set nobackup   " ファイル保存時にバックアップファイルを作らない
 set noswapfile " ファイル編集中にスワップファイルを作らない
