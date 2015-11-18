@@ -1,3 +1,4 @@
-if [ -f ~/.bashrc ] ; then
-. ~/.bashrc
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
 fi

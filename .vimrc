@@ -1,19 +1,19 @@
 syntax on
-
-" ▼ エンコード
+" ▼  エンコード
 set encoding=utf-8
 set fileencoding=utf-8
 " windowsで文字化けした場合に追加 
-" set termencoding=cp932
-" set fileencodings+=utf-8,euc-jp,iso-2022-jp,ucs-2le,ucs-2,euc-jp,cp932
+set termencoding=cp932
+set fileencodings+=utf-8,euc-jp,iso-2022-jp,ucs-2le,ucs-2,euc-jp,cp932
 
 " ▼ 基本的な設定
+set clipboard=unnamed,autoselect
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set nobackup       " ファイル保存時にバックアップファイルを作らない
 set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
 set number         " 行番号を表示する
-set cursorline     " カーソル行の背景色を変える
+"set cursorline     " カーソル行の背景色を変える
 set laststatus=2   " ステータス行を常に表示
 set cmdheight=2    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
@@ -37,3 +37,26 @@ set autoread   "外部でファイルに変更がされた場合は読みなお�
 set noundofile "undofileを作らない
 set nobackup   " ファイル保存時にバックアップファイルを作らない
 set noswapfile " ファイル編集中にスワップファイルを作らない
+
+
+" kaoriya特有の機能をOFF
+if has('kaoriya')
+	let g:no_vimrc_example=0
+	let g:vimrc_local_finish=1
+	let g:gvimrc_local_finish=1
+ 
+	"$VIM/plugins/kaoriya/autodate.vim
+	let plugin_autodate_disable  = 1
+	"$VIM/plugins/kaoriya/cmdex.vim
+	let plugin_cmdex_disable     = 1
+	"$VIM/plugins/kaoriya/dicwin.vim
+	let plugin_dicwin_disable    = 1
+	"$VIMRUNTIME/plugin/format.vim
+	let plugin_format_disable    = 1
+	"$VIM/plugins/kaoriya/hz_ja.vim
+	let plugin_hz_ja_disable     = 1
+	"$VIM/plugins/kaoriya/scrnmode.vim
+	let plugin_scrnmode_disable  = 1
+	"$VIM/plugins/kaoriya/verifyenc.vim
+	let plugin_verifyenc_disable = 1
+endif
