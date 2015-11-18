@@ -1,5 +1,6 @@
 "Display
 colorscheme louver
+" louver.vimを..../vim74/colors/に配置する
 syntax on   "シンタックスカラーリングを設定する
 set textwidth=0 " 自動改行しない
 set cursorline "行ハイライト
