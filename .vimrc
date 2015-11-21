@@ -9,6 +9,7 @@ set fileencoding=utf-8
 
 " ▼ 基本的な設定
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
+set clipboard=unnamed,autoselect "クリックボード
 set nobackup       " ファイル保存時にバックアップファイルを作らない
 set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
