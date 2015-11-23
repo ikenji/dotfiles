@@ -1,8 +1,8 @@
 #!/bin/sh
 # $HOMEディレクトリのdotfileをこのディレクトリにコピーする
 
-dotfiles=(.vimrc .bashrc .bash_profile .gvimrc)
+dotfiles=(.vimrc .bashrc .bash_profile .gvimrc .atom)
 
 for file in ${dotfiles[@]}; do
-        cp  $HOME/$file ./$file 
+        cp -r $HOME/$file ./$file 
     done
