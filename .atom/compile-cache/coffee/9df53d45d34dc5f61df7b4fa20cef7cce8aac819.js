@@ -1,0 +1,153 @@
+(function() {
+  var CompositeDisposable, Emitter, MATCH_PAIRS, RailroadDiagramElement, Range, debounce, issue58, _ref;
+
+  _ref = require('atom'), CompositeDisposable = _ref.CompositeDisposable, Emitter = _ref.Emitter, Range = _ref.Range;
+
+  debounce = require("underscore-plus").debounce;
+
+  RailroadDiagramElement = require("./railroad-diagram-element.coffee");
+
+  MATCH_PAIRS = {
+    '(': ')',
+    '[': ']',
+    '{': '}',
+    '<': '>'
+  };
+
+  issue58 = true;
+
+  module.exports = {
+    regexRailroadDiagramView: null,
+    activate: function(state) {
+      this.subscriptions = new CompositeDisposable;
+      this.emitter = new Emitter;
+      this.subscriptions.add(atom.workspace.observeTextEditors((function(_this) {
+        return function(editor) {
+          return _this.subscriptions.add(editor.onDidChangeCursorPosition(debounce((function() {
+            return _this.checkForRegExp();
+          }), 100)));
+        };
+      })(this)));
+      return this.element = (new RailroadDiagramElement).initialize(this);
+    },
+    deactivate: function() {
+      return this.subscriptions.dispose();
+    },
+    serialize: function() {},
+    bufferRangeForScope: function(editor, scope, position) {
+      var end, endTabs, lineStart, m, result, start, startTabs, tabLength;
+      if (position == null) {
+        position = null;
+      }
+      if (!issue58) {
+        if (position != null) {
+          result = editor.displayBuffer.bufferRangeForScopeAtPosition(scope, position);
+        } else {
+          result = editor.bufferRangeForScopeAtCursor(scope);
+        }
+        return result;
+      }
+      tabLength = editor.getTabLength();
+      if (position == null) {
+        position = editor.getCursorBufferPosition().copy();
+      }
+      lineStart = [[position.row, 0], [position.row, position.column]];
+      if (m = editor.getTextInBufferRange(lineStart).match(/\t/g)) {
+        startTabs = m.length;
+      } else {
+        startTabs = 0;
+      }
+      if (startTabs) {
+        position.column = position.column - startTabs + startTabs * tabLength;
+      }
+      result = editor.displayBuffer.bufferRangeForScopeAtPosition(scope, position);
+      if (!result) {
+        return result;
+      }
+      start = result.start, end = result.end;
+      lineStart = [[end.row, 0], [end.row, end.column]];
+      if (m = editor.getTextInBufferRange(lineStart).match(/\t/g)) {
+        endTabs = m.length;
+      } else {
+        endTabs = 0;
+      }
+      return new Range([start.row, start.column - startTabs * tabLength + startTabs], [end.row, end.column - endTabs * tabLength + endTabs]);
+    },
+    getRegexpBufferRange: function(editor) {
+      var flavour, position, range;
+      position = editor.getCursorBufferPosition();
+      flavour = editor.scopeDescriptorForBufferPosition(position).scopes[0];
+      range = this.bufferRangeForScope(editor, '.raw-regex');
+      if (!range) {
+        range = this.bufferRangeForScope(editor, '.unicode-raw-regex');
+      }
+      if (!range) {
+        range = this.bufferRangeForScope(editor, '.regexp');
+      }
+      if (!range) {
+        return [null, null];
+      }
+      return [range, flavour];
+    },
+    cleanRegex: function(regex, flavour) {
+      var close, expectedClose, m, open, opts, regexForEscaped, text, _ref1, _ref2, _ref3, _ref4, _ref5;
+      opts = "";
+      console.log("regex", regex, "flavour", flavour);
+      if (m = flavour.match(/php/) && regex.match(/^(["'])\/(.*)\/(\w*)\1$/)) {
+        _ref1 = m.slice(2), regex = _ref1[0], opts = _ref1[1];
+      } else if (m = flavour.match(/python/) && regex.match(/^u?r('''|"""|"|')(.*)\1$/)) {
+        regex = m[2];
+      } else if (m = flavour.match(/coffee/) && regex.match(/^\/\/\/(.*)\/\/\/(\w*)/)) {
+        _ref2 = m.slice(1), regex = _ref2[0], opts = _ref2[1];
+      } else if (m = flavour.match(/ruby/) && regex.match(/^%r(.)(.*)(\W)(\w*)$/)) {
+        _ref3 = m.slice(1), open = _ref3[0], text = _ref3[1], close = _ref3[2], opts = _ref3[3];
+        expectedClose = MATCH_PAIRS[open] || open;
+        if (close !== expectedClose) {
+          text = text + close + m[4];
+          close = expectedClose;
+        }
+        regexForEscaped = new RegExp("\\\\(" + open + "|" + close + ")", 'g');
+        regex = text.replace(/\//, '\\/').replace(regexForEscaped, '$1');
+      } else if (m = flavour.match(/perl/) && (regex.match(/^(?:m|qr)(.)(.*)(\1|\W)(\w*)$/) || regex.match(/^s(.)(.*)(\1|\W)(?:\1.*\W|.*\1)(\w*)$/))) {
+        _ref4 = m.slice(1), open = _ref4[0], text = _ref4[1], close = _ref4[2], opts = _ref4[3];
+        expectedClose = MATCH_PAIRS[open] || open;
+        if (close !== expectedClose) {
+          text = text + close + m[4];
+          close = expectedClose;
+        }
+        regexForEscaped = new RegExp("\\\\(" + open + "|" + close + ")", 'g');
+        regex = text.replace(/\//, '\\/').replace(regexForEscaped, '$1');
+      } else if (m = regex.match(/^\/(.*)\/(\w*)$/)) {
+        _ref5 = m.slice(1), regex = _ref5[0], opts = _ref5[1];
+      }
+      console.log("regex", regex, "flavour", flavour, "opts", opts);
+      return [regex, opts];
+    },
+    checkForRegExp: function() {
+      var editor, flavour, options, range, regex, _ref1, _ref2;
+      editor = atom.workspace.getActiveTextEditor();
+      if (editor == null) {
+        return;
+      }
+      _ref1 = this.getRegexpBufferRange(editor), range = _ref1[0], flavour = _ref1[1];
+      if (!range) {
+        return this.element.assertHidden();
+      } else {
+        regex = editor.getTextInBufferRange(range).trim();
+        if (regex === '/') {
+          return this.element.assertHidden();
+        }
+        _ref2 = this.cleanRegex(regex, flavour), regex = _ref2[0], options = _ref2[1];
+        return this.element.showDiagram(regex, {
+          flavour: flavour,
+          options: options
+        });
+      }
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiL1VzZXJzL2ljaGloYXNoaV9rZW5qaS8uYXRvbS9wYWNrYWdlcy9yZWdleC1yYWlscm9hZC1kaWFncmFtL2xpYi9yZWdleC1yYWlscm9hZC1kaWFncmFtLmNvZmZlZSIKICBdLAogICJuYW1lcyI6IFtdLAogICJtYXBwaW5ncyI6ICJBQUNBO0FBQUEsTUFBQSxpR0FBQTs7QUFBQSxFQUFBLE9BQXdDLE9BQUEsQ0FBUSxNQUFSLENBQXhDLEVBQUMsMkJBQUEsbUJBQUQsRUFBc0IsZUFBQSxPQUF0QixFQUErQixhQUFBLEtBQS9CLENBQUE7O0FBQUEsRUFDQyxXQUFZLE9BQUEsQ0FBUSxpQkFBUixFQUFaLFFBREQsQ0FBQTs7QUFBQSxFQUVBLHNCQUFBLEdBQXlCLE9BQUEsQ0FBUSxtQ0FBUixDQUZ6QixDQUFBOztBQUFBLEVBSUEsV0FBQSxHQUFjO0FBQUEsSUFBQSxHQUFBLEVBQUssR0FBTDtBQUFBLElBQVUsR0FBQSxFQUFLLEdBQWY7QUFBQSxJQUFvQixHQUFBLEVBQUssR0FBekI7QUFBQSxJQUE4QixHQUFBLEVBQUssR0FBbkM7R0FKZCxDQUFBOztBQUFBLEVBTUEsT0FBQSxHQUFVLElBTlYsQ0FBQTs7QUFBQSxFQVFBLE1BQU0sQ0FBQyxPQUFQLEdBQ0U7QUFBQSxJQUFBLHdCQUFBLEVBQTBCLElBQTFCO0FBQUEsSUFFQSxRQUFBLEVBQVUsU0FBQyxLQUFELEdBQUE7QUFDUixNQUFBLElBQUMsQ0FBQSxhQUFELEdBQWlCLEdBQUEsQ0FBQSxtQkFBakIsQ0FBQTtBQUFBLE1BQ0EsSUFBQyxDQUFBLE9BQUQsR0FBaUIsR0FBQSxDQUFBLE9BRGpCLENBQUE7QUFBQSxNQUdBLElBQUMsQ0FBQSxhQUFhLENBQUMsR0FBZixDQUFtQixJQUFJLENBQUMsU0FBUyxDQUFDLGtCQUFmLENBQWtDLENBQUEsU0FBQSxLQUFBLEdBQUE7ZUFBQSxTQUFDLE1BQUQsR0FBQTtpQkFDbkQs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
+
+//# sourceURL=/Users/ichihashi_kenji/.atom/packages/regex-railroad-diagram/lib/regex-railroad-diagram.coffee
