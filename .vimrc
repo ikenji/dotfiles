@@ -38,6 +38,12 @@ set noundofile "undofileを作らない
 set nobackup   " ファイル保存時にバックアップファイルを作らない
 set noswapfile " ファイル編集中にスワップファイルを作らない
 
+" window manage 
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 
 " kaoriya特有の機能をOFF
 if has('kaoriya')
@@ -60,3 +66,17 @@ if has('kaoriya')
 	"$VIM/plugins/kaoriya/verifyenc.vim
 	let plugin_verifyenc_disable = 1
 endif
+
+
+function! s:vimdiff_in_newtab(...)
+  if a:0 == 1
+    tabedit %:p
+    exec 'rightbelow vertical diffsplit ' . a:1
+  else
+    exec 'tabedit ' . a:1
+    for l:file in a:000[1 :]
+      exec 'rightbelow vertical diffsplit ' . l:file
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)

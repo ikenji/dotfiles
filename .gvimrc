@@ -3,6 +3,7 @@ colorscheme louver
 " louver.vimを..../vim74/colors/に配置する
 syntax on   "シンタックスカラーリングを設定する
 set textwidth=0 " 自動改行しない
+set formatoptions=q "自動改行しない
 set cursorline "行ハイライト
 set number    "行番号を表示する
 set title    "編集中のファイル名を表示する
