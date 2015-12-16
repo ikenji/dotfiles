@@ -36,7 +36,14 @@ set smartindent   " 改行時に入力された行の末尾に合わせて次の
 set autoread   "外部でファイルに変更がされた場合は読みなおす
 set noundofile "undofileを作らない
 set nobackup   " ファイル保存時にバックアップファイルを作らない
-set noswapfile " ファイル編集中にスワップファイルを作らない
+
+set display=lastline
+set pumheight=10
+set matchtime=1
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " window manage 
 nnoremap <c-j> <c-w>j
@@ -44,3 +51,5 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 inoremap <silent> jj <ESC>
+nnoremap + <C-a>
+nnoremap - <C-x>
