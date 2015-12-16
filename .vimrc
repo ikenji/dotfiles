@@ -43,40 +43,4 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
-
-" kaoriya特有の機能をOFF
-if has('kaoriya')
-	let g:no_vimrc_example=0
-	let g:vimrc_local_finish=1
-	let g:gvimrc_local_finish=1
- 
-	"$VIM/plugins/kaoriya/autodate.vim
-	let plugin_autodate_disable  = 1
-	"$VIM/plugins/kaoriya/cmdex.vim
-	let plugin_cmdex_disable     = 1
-	"$VIM/plugins/kaoriya/dicwin.vim
-	let plugin_dicwin_disable    = 1
-	"$VIMRUNTIME/plugin/format.vim
-	let plugin_format_disable    = 1
-	"$VIM/plugins/kaoriya/hz_ja.vim
-	let plugin_hz_ja_disable     = 1
-	"$VIM/plugins/kaoriya/scrnmode.vim
-	let plugin_scrnmode_disable  = 1
-	"$VIM/plugins/kaoriya/verifyenc.vim
-	let plugin_verifyenc_disable = 1
-endif
-
-
-function! s:vimdiff_in_newtab(...)
-  if a:0 == 1
-    tabedit %:p
-    exec 'rightbelow vertical diffsplit ' . a:1
-  else
-    exec 'tabedit ' . a:1
-    for l:file in a:000[1 :]
-      exec 'rightbelow vertical diffsplit ' . l:file
-    endfor
-  endif
-endfunction
-command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
+inoremap <silent> jj <ESC>

@@ -1,3 +1,4 @@
+:set guioptions+=b
 "Display
 colorscheme louver
 " louver.vimを..../vim74/colors/に配置する
@@ -22,7 +23,8 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 function! ZenkakuSpace()
     highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
-   
+
+
 if has('syntax')
     augroup ZenkakuSpace
         autocmd!
