@@ -3,7 +3,7 @@ syntax on
 set encoding=utf-8
 set fileencoding=utf-8
 " windowsで文字化けした場合に追加 
-set termencoding=cp932
+" set termencoding=cp932
 set fileencodings+=utf-8,euc-jp,iso-2022-jp,ucs-2le,ucs-2,euc-jp,cp932
 
 " ▼ 基本的な設定
@@ -50,6 +50,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-inoremap <silent> jj <ESC>
+inoremap <silent> jj <c-[>
 nnoremap + <C-a>
 nnoremap - <C-x>
