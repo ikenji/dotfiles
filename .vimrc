@@ -56,3 +56,23 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 
 cnoreabbrev w!! w !sudo tee > /dev/null %
+
+if has('vim_starting')
+   " 初回起動時のみruntimepathにneobundleのパスを指定する
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" NeoBundleを初期化
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" インストールするプラグインをここに記述
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+call neobundle#end()
+
+
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" ファイルタイプ別のプラグイン/インデントを有効にする
+filetype plugin indent on
