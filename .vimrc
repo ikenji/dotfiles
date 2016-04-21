@@ -20,7 +20,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
-" My Bundles here:
+NeoBundle 'scrooloose/nerdtree'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
@@ -44,7 +44,7 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set clipboard=unnamed,autoselect
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set nobackup       " ファイル保存時にバックアップファイルを作らない
-set noswapfile     " ファイル編集中にスワップファイルを作らない
+"set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
 set number         " 行番号を表示する
 "set cursorline     " カーソル行の背景色を変える
@@ -87,7 +87,9 @@ nnoremap <c-l> <c-w>l
 inoremap <silent> jj <c-[>
 nnoremap + <C-a>
 nnoremap - <C-x>
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+
 
 " Previm
 let g:previm_open_cmd = 'chrome'
