@@ -44,7 +44,7 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set clipboard=unnamed,autoselect
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set nobackup       " ファイル保存時にバックアップファイルを作らない
-"set noswapfile     " ファイル編集中にスワップファイルを作らない
+set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
 set number         " 行番号を表示する
 "set cursorline     " カーソル行の背景色を変える
