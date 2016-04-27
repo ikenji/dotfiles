@@ -91,6 +91,8 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 
 
+
+
 " Previm
 let g:previm_open_cmd = 'chrome'
 let g:vim_markdown_folding_disabled=1
