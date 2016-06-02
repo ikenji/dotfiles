@@ -100,3 +100,9 @@ nnoremap [previm] <Nop>
 nmap <Space>p [previm]
 nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 nnoremap <silent> [previm]r :call previm#refresh()<CR>
+
+function SetUU()
+    set ff=unix
+    set fenc=utf8
+endfunction
+command -nargs=0 SetUU call SetUU()
