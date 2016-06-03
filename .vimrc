@@ -3,9 +3,8 @@ syntax on
 " ▼ エンコード
 set encoding=utf-8
 set fileencoding=utf-8
-" windowsで文字化けした場合に追加 
-" set termencoding=cp932
-" set fileencodings+=utf-8,euc-jp,iso-2022-jp,ucs-2le,ucs-2,euc-jp,cp932
+set enc=japan
+set fileformat=unix
 
 " ▼ 基本的な設定
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
