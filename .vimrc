@@ -69,6 +69,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itchyny/lightline.vim'
 call neobundle#end()
 
 
