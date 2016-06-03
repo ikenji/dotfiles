@@ -22,6 +22,12 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'grep.vim'
+
 
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
@@ -35,10 +41,23 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+"NeoBundle 'scrooloose/syntastic'
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map={ 'mode': 'passive',
+                        \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json'],
+                        \ 'passive_filetypes': []
+                        \}
+let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_php_checkers=['php','phpcs']
+let g:syntastic_quite_warnings=0
+let g:syntastic_quiet_messages= {"level":"warnings"}
 
 syntax on
 " ▼  エンコード
 set enc=japan
+set fileformat=unix
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " ▼ 基本的な設定
@@ -91,8 +110,6 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-autocmd FileType php set makeprg=php\ -l\ %
-autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 " Previm
 let g:previm_open_cmd='chrome'
 let g:vim_markdown_folding_disabled=1
