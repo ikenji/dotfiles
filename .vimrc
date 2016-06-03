@@ -1,4 +1,4 @@
-" Note: Skip initialization for vim-tiny or vim-small.
+" Nome: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if has('vim_starting')
@@ -38,11 +38,11 @@ NeoBundleCheck
 
 syntax on
 " ▼  エンコード
+set enc=japan
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-" windowsで文字化けした場合に追加 
- set termencoding=cp932
 " ▼ 基本的な設定
+set guifont=Ricty_Diminished:h12:cSHIFTJIS
 set clipboard=unnamed,autoselect
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set nobackup       " ファイル保存時にバックアップファイルを作らない
@@ -89,20 +89,15 @@ nnoremap <c-l> <c-w>l
 inoremap <silent> jj <c-[>
 nnoremap + <C-a>
 nnoremap - <C-x>
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-
-
+autocmd FileType php set makeprg=php\ -l\ %
+autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 " Previm
-let g:previm_open_cmd = 'chrome'
+let g:previm_open_cmd='chrome'
 let g:vim_markdown_folding_disabled=1
 nnoremap [previm] <Nop>
 nmap <Space>p [previm]
 nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 nnoremap <silent> [previm]r :call previm#refresh()<CR>
 
-function SetUU()
-    set ff=unix
-    set fenc=utf8
-endfunction
-command -nargs=0 SetUU call SetUU()
