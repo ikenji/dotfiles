@@ -16,7 +16,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
@@ -50,7 +49,7 @@ let g:syntastic_mode_map={ 'mode': 'passive',
                         \}
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_php_checkers=['php','phpcs']
+let g:syntastic_php_checkers=['php']
 let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
 
@@ -59,7 +58,7 @@ syntax on
 set enc=japan
 set fileformat=unix
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=iso-2022-jp,euc-jp,utf-8,sjis
 " ▼ 基本的な設定
 set guifont=Ricty_Diminished:h12:cSHIFTJIS
 set clipboard=unnamed,autoselect
