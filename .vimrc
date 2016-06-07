@@ -26,7 +26,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
-
+NeoBundle "ctrlpvim/ctrlp.vim"
 
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
