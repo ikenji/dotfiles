@@ -33,7 +33,7 @@ let g:syntastic_mode_map={ 'mode': 'passive',
 			\}
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_php_checkers=['php','phpcs']
+let g:syntastic_php_checkers=['php']
 let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
 
