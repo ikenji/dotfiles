@@ -14,6 +14,7 @@ NeoBundle 'tyru/open-browser.vim' " PreVimOpenでブラウザ起動
 NeoBundle 'scrooloose/nerdtree' " ツリー
 NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
 NeoBundle 'scrooloose/syntastic' " check syntax error
+NeoBundle "ctrlpvim/ctrlp.vim"
 call neobundle#end()
 
 " Required:
