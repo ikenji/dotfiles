@@ -15,6 +15,7 @@ NeoBundle 'scrooloose/nerdtree' " ツリー
 NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
 NeoBundle 'scrooloose/syntastic' " check syntax error
 NeoBundle "ctrlpvim/ctrlp.vim"
+NeoBundle 'Townk/vim-autoclose'
 call neobundle#end()
 
 " Required:
