@@ -1,4 +1,5 @@
 alias ll='ls -la'
+alias g='git'
 source /.git-completion.bash
 source /.git-prompt.sh
 

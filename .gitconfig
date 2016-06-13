@@ -1,0 +1,26 @@
+[core]
+	autocrlf = input
+	quotepath = false
+	editor = vim -c \"set fenc=utf-8\"
+[push]
+	default = simple
+[code]
+	quotepath = false
+[gui]
+	encoding = UTF-8
+[diff]
+	renames = true
+[alias]
+    s = status -s
+    co = checkout
+    l = log --oneline
+    lname = log -p -m --name-only
+    b = branch
+    d = diff
+[merge]
+    tool = WinMerge
+[mergetool "WinMerge"]
+    path = C:/Program Files/WinMerge/WinMergeU.exe
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	keepBackup = false
