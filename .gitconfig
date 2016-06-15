@@ -1,3 +1,6 @@
+[user]
+	name = IchihashiKenji
+	email = ichihashi_kenji@infonear.co.jp
 [core]
 	autocrlf = input
 	quotepath = false

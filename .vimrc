@@ -27,6 +27,7 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle "ctrlpvim/ctrlp.vim"
+" NeoBundle 'Xuyuanp/nerdtree-git-plugin' 遅いから保留
 
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
@@ -39,8 +40,7 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-
-"NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={ 'mode': 'passive',
@@ -52,6 +52,9 @@ let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_php_checkers=['php']
 let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
+
+" NeoBundle 'scrooloose/nerdtree'
+let NERDTreeShowHidden=1
 
 syntax on
 " ▼  エンコード
@@ -99,7 +102,7 @@ set matchtime=1
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" window manage 
+" window manage
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
@@ -109,6 +112,7 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+autocmd BufWritePre * :%s/\s\+$//e
 " Previm
 let g:previm_open_cmd='chrome'
 let g:vim_markdown_folding_disabled=1
