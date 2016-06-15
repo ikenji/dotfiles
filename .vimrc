@@ -81,6 +81,7 @@ set display=lastline
 set pumheight=10
 set matchtime=1
 
+autocmd BufWritePre * :%s/\s\+$//e
 
 " ---- key bind ----
 nnoremap <c-j> <c-w>j
