@@ -27,10 +27,10 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle "ctrlpvim/ctrlp.vim"
-" NeoBundle 'Xuyuanp/nerdtree-git-plugin' 遅いから保留
-
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
+" indentの深さに色を付ける
+" NeoBundle 'nathanaelkane/vim-indent-guides'
+" syntax + 自動compile
+NeoBundle 'kchmck/vim-coffee-script'
 
 call neobundle#end()
 
@@ -55,6 +55,19 @@ let g:syntastic_quiet_messages= {"level":"warnings"}
 
 " NeoBundle 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
+
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデントを設定
+autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+" vim-indent-guides
+" let g:indent_guides_auto_colors=0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=110
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=140
+" let g:indent_guides_enable_on_vim_startup=1
+" let g:indent_guides_guide_size=1
+
 
 syntax on
 " ▼  エンコード
@@ -118,5 +131,6 @@ let g:previm_open_cmd='chrome'
 let g:vim_markdown_folding_disabled=1
 nnoremap [previm] <Nop>
 nmap <Space>p [previm]
+nmap / /\v
 nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 nnoremap <silent> [previm]r :call previm#refresh()<CR>

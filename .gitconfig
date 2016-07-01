@@ -21,7 +21,7 @@
     l = log --oneline
     lname = log -p -m --name-only
     b = branch
-    d = diff
+    d = diff --ignore-space-change --word-diff
 [merge]
     tool = WinMerge
 [mergetool "WinMerge"]
