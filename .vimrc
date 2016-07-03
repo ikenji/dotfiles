@@ -20,6 +20,7 @@ call neobundle#end()
 
 " Required:
 filetype plugin indent on
+
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -80,8 +81,6 @@ set display=lastline
 set pumheight=10
 set matchtime=1
 
-autocmd BufWritePre * :%s/\s\+$//e
-
 
 " ---- key bind ----
 nnoremap <c-j> <c-w>j
@@ -89,4 +88,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 inoremap <silent> jj <ESC>
+nnoremap + <C-a>
+nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>

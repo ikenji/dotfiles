@@ -1,0 +1,17 @@
+[push]
+	default = matching
+[user]
+	name = ichihashi_kenji
+	email = jdabc1843@gmail.com
+	username = iKenji
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[alias]
+	s = status -s
+  l = log --oneline
+  b = branch
+  co = checkout
+  c = commit
+  a = add
