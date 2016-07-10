@@ -11,7 +11,7 @@ set ruler    "座標を表示する
 set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
 set matchtime=3 "showmatchの表示時間
 set laststatus=2    "ステータスラインを常に表示する
-
+set imdisable 
 
 "タブ、空白、改行の可視化
 set list

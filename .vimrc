@@ -30,8 +30,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={ 'mode': 'passive',
                         \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json'],
-			\ 'passive_filetypes': []
-			\}
+	                  		\ 'passive_filetypes': []
+			                  \}
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_php_checkers=['php']
@@ -51,7 +51,7 @@ set fileencoding=utf-8
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
 set nobackup       " ファイル保存時にバックアップファイルを作らない
-set noswapfile     " ファイル編集中にスワップファイルを作らない
+" set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
 set number         " 行番号を表示する
 set cursorline     " カーソル行の背景色を変える
