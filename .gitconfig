@@ -11,6 +11,7 @@
 [alias]
 	s = status -s
   l = log --oneline
+  lname = log -p --name-only
   b = branch
   co = checkout
   c = commit
