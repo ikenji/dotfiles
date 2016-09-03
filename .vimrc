@@ -54,7 +54,6 @@ set autoread       " 外部でファイルに変更がされた場合は読み�
 set clipboard=unnamed,autoselect "クリックボード
 set nobackup       " ファイル保存時にバックアップファイルを作らない
 set noswapfile     " ファイル編集中にスワップファイルを作らない
-set nostartofline  " 移動時に行頭に移動しない
 set title          " 編集中のファイル名を表示する
 set nowrap         " 折り返さない
 set vb t_vb=       " ピープをならさない
