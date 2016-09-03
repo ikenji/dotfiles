@@ -25,6 +25,8 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+"NeoBundle 'nerdtree"
+let NERDTreeShowHidden=1
 "NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
@@ -51,8 +53,12 @@ set fileencoding=utf-8
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
 set nobackup       " ファイル保存時にバックアップファイルを作らない
-" set noswapfile     " ファイル編集中にスワップファイルを作らない
+set noswapfile     " ファイル編集中にスワップファイルを作らない
+set nostartofline  " 移動時に行頭に移動しない
 set title          " 編集中のファイル名を表示する
+set nowrap         " 折り返さない
+set vb t_vb=       " ピープをならさない
+set novisualbell
 set number         " 行番号を表示する
 set cursorline     " カーソル行の背景色を変える
 set laststatus=2   " ステータス行を常に表示
@@ -60,6 +66,7 @@ set cmdheight=2    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
 
 set hlsearch   " 検索文字列をハイライトする
+set nowrapscan
 set incsearch  " インクリメンタルサーチを行う
 set ignorecase " 大文字と小文字を区別しない
 set smartcase  " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
@@ -81,6 +88,8 @@ set display=lastline
 set pumheight=10
 set matchtime=1
 
+set whichwrap=b,s,h,l,<,>,[,]
+set matchpairs& matchpairs+=<:>
 
 " ---- key bind ----
 nnoremap <c-j> <c-w>j
