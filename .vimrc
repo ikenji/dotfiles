@@ -87,8 +87,6 @@ set display=lastline
 set pumheight=10
 set matchtime=1
 
-set whichwrap=b,s,h,l,<,>,[,]
-set matchpairs& matchpairs+=<:>
 
 " ---- key bind ----
 nnoremap <c-j> <c-w>j
