@@ -82,6 +82,9 @@ set autoread       " 外部でファイルに変更がされた場合は読み�
 set nobackup       " ファイル保存時にバックアップファイルを作らない
 set noswapfile     " ファイル編集中にスワップファイルを作らない
 set title          " 編集中のファイル名を表示する
+set nowrap         " 折り返さない
+set vb t_vb=       " ピープをならさない
+set novisualbell
 set number         " 行番号を表示する
 "set cursorline     " カーソル行の背景色を変える
 set laststatus=2   " ステータス行を常に表示
@@ -125,6 +128,7 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+" 行末の空白を削除
 autocmd BufWritePre * :%s/\s\+$//e
 " Previm
 let g:previm_open_cmd='chrome'
