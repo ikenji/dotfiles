@@ -114,6 +114,8 @@ set display=lastline
 set pumheight=10
 set matchtime=1
 
+set whichwrap=b,s,h,l,<,>,[,]
+set matchpairs& matchpairs+=<:>
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
