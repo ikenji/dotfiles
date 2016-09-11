@@ -12,6 +12,7 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim' " PreVimOpenでブラウザ起動
 NeoBundle 'scrooloose/nerdtree' " ツリー
+NeoBundle 'jistr/vim-nerdtree-tabs' " ツリータブ時に便利に
 NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
 NeoBundle 'scrooloose/syntastic' " check syntax error
 NeoBundle "ctrlpvim/ctrlp.vim"
@@ -98,4 +99,4 @@ nnoremap <c-l> <c-w>l
 inoremap <silent> jj <ESC>
 nnoremap + <C-a>
 nnoremap - <C-x>
-nnoremap <silent><C-n> :NERDTreeToggle<CR>
+nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
