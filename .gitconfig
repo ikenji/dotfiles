@@ -1,19 +1,31 @@
-[push]
-	default = matching
 [user]
-	name = ichihashi_kenji
-	email = jdabc1843@gmail.com
-	username = iKenji
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  name = IchihashiKenji
+  email = ichihashi_kenji@infonear.co.jp
+[core]
+  autocrlf = input
+  quotepath = false
+  excludesfile = /Users/ichihashi_kenji/.gitignore_global
+  editor = vim -c \"set fenc=utf-8\"
+[push]
+  default = simple
+[code]
+  quotepath = false
+[gui]
+  encoding = UTF-8
 [alias]
-	s = status -s
-  l = log --oneline
-  lname = log -p --name-only
-  b = branch
-  co = checkout
-  c = commit
+# git diff --shortstat `git log --pretty=%H --since 'last month' | tail -n 1`
+  s = status -s
   a = add
+  c = commit -v
+  co = checkout
+  l = log --oneline
+  lname = log -p -m --name-only
+  b = branch
   d = diff --ignore-space-change --word-diff
+[credential]
+  helper = cache --timeout=3600
+[commit]
+  verbose = true
+[rebase]
+  autosquash = true
+

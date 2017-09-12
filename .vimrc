@@ -41,6 +41,9 @@ let g:syntastic_php_checkers=['php']
 let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
 
+" NeoBundle 'ctrlp'
+let g:ctrlp_max_height          = &lines " 目一杯に一覧
+
 au BufRead,BufNewFile *.md set filetype=markdown
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
@@ -48,8 +51,8 @@ filetype plugin indent on
 " ---- vim config ----
 syntax on
 " ▼ エンコード
-set encoding=utf-8
-set fileencoding=utf-8
+set enc=utf-8
+set fencs=utf-8,euc-jp,sjis
 " ▼ 基本的な設定
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
@@ -74,9 +77,9 @@ set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移
 set gdefault   " 置換の時 g オプションをデフォルトで有効にする
 
 set expandtab     " タブ入力を複数の空白入力に置き換える
-set tabstop=2     " 画面上でタブ文字が占める幅
-set shiftwidth=2  " 自動インデントでずれる幅
-set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set tabstop=4     " 画面上でタブ文字が占める幅
+set shiftwidth=4  " 自動インデントでずれる幅
+set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
