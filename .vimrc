@@ -17,6 +17,7 @@ NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
 NeoBundle 'scrooloose/syntastic' " check syntax error
 NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'apple-swift', {'type': 'nosync', 'base': '~/.vim/bundle/manual'}
 call neobundle#end()
 
 " Required:
