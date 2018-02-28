@@ -43,7 +43,7 @@ let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
 
 " NeoBundle 'ctrlp'
-let g:ctrlp_max_height          = &lines " 目一杯に一覧
+let g:ctrlp_max_height          = 25
 
 au BufRead,BufNewFile *.md set filetype=markdown
 " ファイルタイプ別のプラグイン/インデントを有効にする
@@ -100,7 +100,10 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+" jjでエスケープ
 inoremap <silent> jj <ESC>
+" 日本語入力で”っj”と入力してもEnterキーで確定させればインサートモードを抜ける
+inoremap <silent> っj <ESC>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>

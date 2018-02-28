@@ -10,3 +10,10 @@ export PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\
 # alias
 alias ll='ls -la'
 alias g='git'
+export LESSCHARSET=utf-8
+
+## Go 環境設定
+if [ -x "`which go`" ]; then
+    export GOPATH=$HOME/.go
+    export PATH=$PATH:$GOPATH/bin
+fi
