@@ -17,7 +17,7 @@ NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
 NeoBundle 'scrooloose/syntastic' " check syntax error
 NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'apple-swift', {'type': 'nosync', 'base': '~/.vim/bundle/manual'}
+NeoBundle 'fatih/vim-go'
 call neobundle#end()
 
 " Required:
@@ -64,7 +64,7 @@ set nowrap         " 折り返さない
 set vb t_vb=       " ピープをならさない
 set novisualbell
 set number         " 行番号を表示する
-set cursorline     " カーソル行の背景色を変える
+" set cursorline     " カーソル行の背景色を変える
 set laststatus=2   " ステータス行を常に表示
 set cmdheight=2    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示

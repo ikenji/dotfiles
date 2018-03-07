@@ -14,6 +14,6 @@ export LESSCHARSET=utf-8
 
 ## Go 環境設定
 if [ -x "`which go`" ]; then
-    export GOPATH=$HOME/.go
+    export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
 fi
