@@ -113,3 +113,12 @@ inoremap <silent> っj <ESC>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
+if has("autocmd")
+  "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
+endif
