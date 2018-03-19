@@ -18,6 +18,8 @@ NeoBundle 'scrooloose/syntastic' " check syntax error
 NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'easymotion/vim-easymotion'
+
 call neobundle#end()
 
 " Required:
@@ -33,22 +35,26 @@ let NERDTreeShowHidden=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={ 'mode': 'passive',
-                        \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json'],
+                        \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json', 'go'],
                         \ 'passive_filetypes': []
                         \}
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_php_checkers=['php']
+let g:syntastic_go_checkers=['go', 'golint', 'gotype', 'govet']
 let g:syntastic_quite_warnings=0
 let g:syntastic_quiet_messages= {"level":"warnings"}
 
 " NeoBundle 'ctrlp'
 let g:ctrlp_max_height          = 25
 
+let mapleader = "\<Space>"
+
 au BufRead,BufNewFile *.md set filetype=markdown
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 " ---- vim config ----
 syntax on
 " ▼ エンコード
