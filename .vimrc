@@ -39,11 +39,13 @@ let g:neocomplete#enable_at_startup = 1 "ポップアップメニューで表示
 let g:neocomplete#max_list = 50 "キーワードの長さ、デフォルトで80
 let g:neocomplete#max_keyword_width = 80
 let g:neocomplete#enable_ignore_case = 1
-"NeoBundle 'vim-go'
+"NeoBundle 'fatih/vim-go'
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-
+let g:go_highlight_operators = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
 "NeoBundle 'nerdtree"
 let NERDTreeShowHidden=1
 "NeoBundle 'scrooloose/syntastic'
@@ -75,6 +77,7 @@ syntax on
 set enc=utf-8
 set fencs=utf-8,euc-jp,sjis
 " ▼ 基本的な設定
+set backspace=indent,eol,start
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
 set nobackup       " ファイル保存時にバックアップファイルを作らない
@@ -138,4 +141,6 @@ if has("autocmd")
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#BC4635
+  autocmd FileType go :match goErr /\<err\>/
 endif

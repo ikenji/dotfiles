@@ -14,3 +14,7 @@ if [ -x "`which go`" ]; then
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
 fi
+if [ -x `which vim` ];  then
+   alias vi='vim'
+   alias view='vim -R'
+fi
