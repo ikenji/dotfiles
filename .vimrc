@@ -19,6 +19,7 @@ NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'easymotion/vim-easymotion'
+NeoBundle 'Shougo/neocomplete.vim'
 
 call neobundle#end()
 
@@ -28,6 +29,20 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+"NeoBundle 'neocomplete'
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.'
+let g:neocomplete#enable_at_startup = 1 "ポップアップメニューで表示される候補の数
+let g:neocomplete#max_list = 50 "キーワードの長さ、デフォルトで80
+let g:neocomplete#max_keyword_width = 80
+let g:neocomplete#enable_ignore_case = 1
+"NeoBundle 'vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 
 "NeoBundle 'nerdtree"
 let NERDTreeShowHidden=1
@@ -51,10 +66,9 @@ let g:ctrlp_max_height          = 25
 let mapleader = "\<Space>"
 
 au BufRead,BufNewFile *.md set filetype=markdown
-" ファイルタイプ別のプラグイン/インデントを有効にする
-filetype plugin indent on
+NeoBundleCheck
+" ---- /NeoBundle ----
 
-exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 " ---- vim config ----
 syntax on
 " ▼ エンコード
@@ -113,6 +127,9 @@ inoremap <silent> っj <ESC>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
+
+" ファイルタイプ別のプラグイン/インデントを有効にする
+filetype plugin indent on
 if has("autocmd")
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
