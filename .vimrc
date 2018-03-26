@@ -76,7 +76,6 @@ syntax on
 " ▼ エンコード
 set enc=utf-8
 set fencs=utf-8,euc-jp,sjis
-" ▼ 基本的な設定
 set backspace=indent,eol,start
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
@@ -141,6 +140,6 @@ if has("autocmd")
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#BC4635
+  autocmd FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#CC4635
   autocmd FileType go :match goErr /\<err\>/
 endif
