@@ -20,6 +20,10 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'slim-template/vim-slim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'vim-scripts/SQLUtilities'
+NeoBundle 'kchmck/vim-coffee-script'
 
 call neobundle#end()
 
@@ -129,16 +133,25 @@ inoremap <silent> っj <ESC>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
+" SQL Format
+:command SQLF :SQLUFormatter
+
+
+
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 if has("autocmd")
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
-  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType php         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType slim        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType coffee  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType css         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType scss        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#CC4635
   autocmd FileType go :match goErr /\<err\>/
