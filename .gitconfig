@@ -22,6 +22,7 @@
   lname = log -p -m --name-only
   b = branch
   d = diff --ignore-space-change --word-diff
+  bsort = for-each-ref --format='%(authordate) %(refname)' --sort=-committerdate refs/heads refs/remotes
 [credential]
   helper = cache --timeout=3600
 [commit]
