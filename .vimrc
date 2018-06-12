@@ -24,6 +24,7 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
 
 call neobundle#end()
 

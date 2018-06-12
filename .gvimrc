@@ -1,6 +1,6 @@
 "Display
 " louver.vimを..../vim74/colors/に配置する
-colorscheme louver
+colorscheme wombat
 " ----config----
 syntax on   "シンタックスカラーリングを設定する
 " set guifont=Andale\ Mono:h12
