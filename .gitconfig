@@ -30,3 +30,5 @@
 [rebase]
   autosquash = true
 
+[grep]
+	lineNumber = true

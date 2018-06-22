@@ -72,6 +72,9 @@ let g:ctrlp_max_height          = 25
 
 let mapleader = "\<Space>"
 
+" EasyMotion
+let g:EasyMotion_leader_key = '<Space>'
+
 au BufRead,BufNewFile *.md set filetype=markdown
 NeoBundleCheck
 " ---- /NeoBundle ----
