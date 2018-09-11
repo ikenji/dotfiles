@@ -24,8 +24,16 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'posva/vim-vue'
+NeoBundle 'sekel/vim-vue-syntastic'
 
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'reedes/vim-colors-pencil' "light
+NeoBundle 'jacoborus/tender.vim'
+NeoBundle 'gosukiwi/vim-atom-dark' "github
 call neobundle#end()
 
 " Required:
@@ -75,6 +83,16 @@ let mapleader = "\<Space>"
 " EasyMotion
 let g:EasyMotion_leader_key = '<Space>'
 
+" vue
+let g:syntastic_vue_checkers = ['eslint']
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_vue_eslint_exec = local_eslint
+endif
+
 au BufRead,BufNewFile *.md set filetype=markdown
 NeoBundleCheck
 " ---- /NeoBundle ----
@@ -108,9 +126,9 @@ set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移
 set gdefault   " 置換の時 g オプションをデフォルトで有効にする
 
 set expandtab     " タブ入力を複数の空白入力に置き換える
-set tabstop=4     " 画面上でタブ文字が占める幅
-set shiftwidth=4  " 自動インデントでずれる幅
-set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set tabstop=2     " 画面上でタブ文字が占める幅
+set shiftwidth=2  " 自動インデントでずれる幅
+set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
@@ -148,12 +166,14 @@ filetype plugin indent on
 if has("autocmd")
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType erb         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType php         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType php         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType slim        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType coffee  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType coffee      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType css         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType scss        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sh          setlocal sw=2 sts=2 ts=2 et
