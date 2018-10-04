@@ -1,16 +1,20 @@
 "Display
 " louver.vimを..../vim74/colors/に配置する
-" colorscheme wombat "dark
 colorscheme jellybeans "dark2
 " colorscheme atom-dark-256 "atom-dark
+" colorscheme molokai "darkbibit
+" colorscheme wombat "dark
 " colorscheme tender "contrast
 " colorscheme louver "light-gray
 " colorscheme pencil "light
 
 " ----config----
 syntax on   "シンタックスカラーリングを設定する
+set t_Co=256
+" set guifont=Menlo:h12
+set guifont="San Francisco Mono"
 " set guifont=Andale\ Mono:h12
-set guifont=Menlo:16
+" set guifont=Monaco:h16
 set textwidth=0 " 自動改行しない
 set cursorline "行ハイライト
 set number    "行番号を表示する

@@ -81,7 +81,7 @@ let g:ctrlp_max_height          = 25
 let mapleader = "\<Space>"
 
 " EasyMotion
-let g:EasyMotion_leader_key = '<Space>'
+let g:EasyMotion_leader_key = 'f'
 
 " vue
 let g:syntastic_vue_checkers = ['eslint']
