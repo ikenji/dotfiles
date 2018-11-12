@@ -1,67 +1,59 @@
-" ---- vim plugin(NeoBundle) ----
-if has('vim_starting')
-  " 初回起動時のみruntimepathにneobundleのパスを指定
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+" ----- dein.vim -----
+if &compatible
+  set nocompatible
 endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" NeoBundleを初期化
-call neobundle#begin(expand('~/.vim/bundle/'))
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-" plugin list
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim' " PreVimOpenでブラウザ起動
-NeoBundle 'scrooloose/nerdtree' " ツリー
-NeoBundle 'jistr/vim-nerdtree-tabs' " ツリータブ時に便利に
-NeoBundle 'itchyny/lightline.vim' " ウィンドウ下部にモード表示
-NeoBundle 'scrooloose/syntastic' " check syntax error
-NeoBundle "ctrlpvim/ctrlp.vim"
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'vim-scripts/SQLUtilities'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'posva/vim-vue'
-NeoBundle 'sekel/vim-vue-syntastic'
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
 
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'reedes/vim-colors-pencil' "light
-NeoBundle 'jacoborus/tender.vim'
-NeoBundle 'gosukiwi/vim-atom-dark' "github
-call neobundle#end()
+  call dein#add('nanotech/jellybeans.vim')
+  call dein#add('itchyny/lightline')
 
-" Required:
-filetype plugin indent on
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('jistr/vim-nerdtree-tabs')
+  call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('easymotion/vim-easymotion')
+  call dein#add('vim-scripts/Align')
+  call dein#add('vim-scripts/SQLUtilities')
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+  call dein#add('scrooloose/syntastic')
 
-"NeoBundle 'neocomplete'
-if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
+  call dein#add('posva/vim-vue')
+  call dein#add('sekel/vim-vue-syntastic')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('slim-template/vim-slim')
+  call dein#add( 'fatih/vim-go')
+  call dein#add( 'Townk/vim-autoclose')
+
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  call dein#end()
+  call dein#save_state()
 endif
-let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.'
-let g:neocomplete#enable_at_startup = 1 "ポップアップメニューで表示される候補の数
-let g:neocomplete#max_list = 50 "キーワードの長さ、デフォルトで80
-let g:neocomplete#max_keyword_width = 80
-let g:neocomplete#enable_ignore_case = 1
-"NeoBundle 'fatih/vim-go'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_build_constraints = 1
-"NeoBundle 'nerdtree"
+" ----- /dein.vim -----
+
+" ----- plugin config -----
+" Nerdtree
+nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
-"NeoBundle 'scrooloose/syntastic'
+" EasyMotion
+let g:EasyMotion_leader_key='<Space>'
+" fatih/vim-go
+let g:go_highlight_functions=1
+let g:go_highlight_methods=1
+let g:go_highlight_structs=1
+let g:go_highlight_operators=1
+let g:go_highlight_fields=1
+let g:go_highlight_build_constraints=1
+" scrooloose/syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={ 'mode': 'passive',
@@ -73,16 +65,7 @@ let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_php_checkers=['php']
 let g:syntastic_go_checkers=['go', 'golint', 'gotype', 'govet']
 let g:syntastic_quite_warnings=0
-let g:syntastic_quiet_messages= {"level":"warnings"}
-
-" NeoBundle 'ctrlp'
-let g:ctrlp_max_height          = 25
-
-let mapleader = "\<Space>"
-
-" EasyMotion
-let g:EasyMotion_leader_key = '<Space>'
-
+let g:syntastic_quiet_messages={"level":"warnings"}
 " vue
 let g:syntastic_vue_checkers = ['eslint']
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
@@ -92,14 +75,17 @@ endif
 if executable(local_eslint)
     let g:syntastic_vue_eslint_exec = local_eslint
 endif
+" ctrlp
+let g:ctrlp_max_height = 15
+" SQL Format
+:command SQLF :SQLUFormatter
+" ----- /plugin config -----
 
-au BufRead,BufNewFile *.md set filetype=markdown
-NeoBundleCheck
-" ---- /NeoBundle ----
 
-" ---- vim config ----
-syntax on
-" ▼ エンコード
+" ----- vimconfig -----
+filetype plugin indent on
+syntax enable
+" --- encode ----\
 set enc=utf-8
 set fencs=utf-8,euc-jp,sjis
 set backspace=indent,eol,start
@@ -143,24 +129,14 @@ set matchtime=1
 set whichwrap=b,s,h,l,<,>,[,]
 set matchpairs& matchpairs+=<:>
 
-" ---- key bind ----
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 " jjでエスケープ
 inoremap <silent> jj <ESC>
-" 日本語入力で”っj”と入力してもEnterキーで確定させればインサートモードを抜ける
-inoremap <silent> っj <ESC>
+inoremap <silent> っｊ <ESC>
+
 nnoremap + <C-a>
 nnoremap - <C-x>
-nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
-" SQL Format
-:command SQLF :SQLUFormatter
 
-
-
-
+" ----- indent -----
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 if has("autocmd")
@@ -180,3 +156,4 @@ if has("autocmd")
   autocmd FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#CC4635
   autocmd FileType go :match goErr /\<err\>/
 endif
+" ----- /indent -----
