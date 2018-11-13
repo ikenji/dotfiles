@@ -19,7 +19,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('easymotion/vim-easymotion')
   call dein#add('vim-scripts/Align')
   call dein#add('vim-scripts/SQLUtilities')
-  call dein#add('osyo-manga/vim-anzu')
 
   call dein#add('scrooloose/syntastic')
 
