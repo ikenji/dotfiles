@@ -9,7 +9,6 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
 
   call dein#add('nanotech/jellybeans.vim')
   call dein#add('itchyny/lightline.vim')
@@ -20,6 +19,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('easymotion/vim-easymotion')
   call dein#add('vim-scripts/Align')
   call dein#add('vim-scripts/SQLUtilities')
+  call dein#add('osyo-manga/vim-anzu')
 
   call dein#add('scrooloose/syntastic')
 
@@ -27,13 +27,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('sekel/vim-vue-syntastic')
   call dein#add('kchmck/vim-coffee-script')
   call dein#add('slim-template/vim-slim')
-  call dein#add( 'fatih/vim-go')
-  call dein#add( 'Townk/vim-autoclose')
-
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
+  call dein#add('fatih/vim-go')
+  call dein#add('Townk/vim-autoclose')
 
   call dein#end()
   call dein#save_state()
@@ -60,7 +55,7 @@ let g:syntastic_mode_map={ 'mode': 'passive',
                         \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json', 'go'],
                         \ 'passive_filetypes': []
                         \}
-let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_ruby_checkers=['mri']
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_php_checkers=['php']
 let g:syntastic_go_checkers=['go', 'golint', 'gotype', 'govet']
