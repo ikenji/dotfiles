@@ -2,6 +2,7 @@ ansible
 autoconf
 awscli
 awslogs
+coreutils
 gdbm
 go
 icu4c

@@ -9,7 +9,7 @@ export "EDITOR=vim"
 source ~/git-prompt.sh
 source ~/git-completion.bash
 # alias
-alias ll='ls -la'
+alias ll='ls -lahG'
 alias g='git'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
