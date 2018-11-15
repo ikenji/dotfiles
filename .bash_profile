@@ -17,10 +17,16 @@ function peco-select-history() {
 bind -x '"\C-r": peco-select-history'
 
 function peco-sshconfig-ssh() {
-    local host=$(grep 'Host ' ~/.ssh/config | awk '{print $2}' | peco)
-    if [ -n "$host" ]; then
-        echo "ssh -F ~/.ssh/config $host"
-        ssh -F ~/.ssh/config $host
-    fi
+  conf=${@:-"$HOME/.ssh/config"}
+  if [ ! -e $conf ]; then
+    echo "'./"$conf"' is not found"
+    return
+  fi
+
+  local host=$(grep 'Host ' $conf | awk '{print $2}' | peco)
+  if [ -n "$host" ]; then
+      echo "ssh -F $conf $host"
+      ssh -F $conf $host
+  fi
 }
-alias sshc='peco-sshconfig-ssh'
+alias sshf='peco-sshconfig-ssh $@'
