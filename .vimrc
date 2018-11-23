@@ -29,6 +29,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('fatih/vim-go')
   call dein#add('Townk/vim-autoclose')
 
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-surround')
+  call dein#add('alpaca-tc/vim-endwise.git')
+
   call dein#end()
   call dein#save_state()
 endif
