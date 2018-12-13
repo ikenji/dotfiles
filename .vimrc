@@ -85,7 +85,7 @@ filetype plugin indent on
 syntax enable
 " --- encode ----\
 set enc=utf-8
-set fencs=utf-8,euc-jp,sjis
+set fencs=utf-8,sjis,euc-jp
 set backspace=indent,eol,start
 set autoread       " 外部でファイルに変更がされた場合は読みなおす
 set clipboard=unnamed,autoselect "クリックボード
