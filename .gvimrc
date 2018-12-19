@@ -1,4 +1,4 @@
-set fencs=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fencs=utf-8,cp932,sjis,iso-2022-jp,euc-jp
 
 "Display
 colorscheme jellybeans "dark2
