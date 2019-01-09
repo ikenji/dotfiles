@@ -123,6 +123,7 @@ set nobackup   " ファイル保存時にバックアップファイルを作ら
 set display=lastline
 set pumheight=10
 set matchtime=1
+set imdisable
 
 set whichwrap=b,s,h,l,<,>,[,]
 set matchpairs& matchpairs+=<:>
