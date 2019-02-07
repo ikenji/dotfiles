@@ -19,6 +19,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('easymotion/vim-easymotion')
   call dein#add('vim-scripts/Align')
   call dein#add('vim-scripts/SQLUtilities')
+  call dein#add('gorodinskiy/vim-coloresque')
 
   call dein#add('scrooloose/syntastic')
 
@@ -42,6 +43,7 @@ endif
 " Nerdtree
 nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
+let g:NERDTreeNodeDelimiter = "\u00a0"
 " EasyMotion
 let g:EasyMotion_leader_key='<Space>'
 " fatih/vim-go
@@ -134,6 +136,11 @@ inoremap <silent> っｊ <ESC>
 
 nnoremap + <C-a>
 nnoremap - <C-x>
+
+" Ctrl + [, Esc で :terminal の insert を抜ける
+tnoremap <Esc> <C-w><S-n>
+tnoremap <C-[> <C-w><S-n>
+:command T :terminal
 
 " ----- indent -----
 " ファイルタイプ別のプラグイン/インデントを有効にする

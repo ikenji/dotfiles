@@ -11,8 +11,6 @@ source ~/git-completion.bash
 # alias
 alias ll='ls -lahG'
 alias g='git'
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 ## Go 環境設定
 if [ -x "`which go`" ]; then
@@ -20,6 +18,7 @@ if [ -x "`which go`" ]; then
     export PATH=$PATH:$GOPATH/bin
 fi
 if [ -x `which vim` ];  then
-   alias vi='vim'
    alias view='vim -R'
+   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+   alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
