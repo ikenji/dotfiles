@@ -130,6 +130,9 @@ set imdisable
 set whichwrap=b,s,h,l,<,>,[,]
 set matchpairs& matchpairs+=<:>
 
+" ctrl + g でファイルのパスをクリップボードへコピー
+nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
+
 " jjでエスケープ
 inoremap <silent> jj <ESC>
 inoremap <silent> っｊ <ESC>
