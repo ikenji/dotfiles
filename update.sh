@@ -7,6 +7,6 @@ for file in ${dotfiles[@]}; do
   cp -rf $HOME/$file ./ 
 done
 
-brew list > brewlist.txt
+brew leaves > brewlist.txt
 echo "\n[cask]" >> brewlist.txt
 brew cask list >> brewlist.txt
