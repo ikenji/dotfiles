@@ -6,6 +6,7 @@ bash-completion
 coreutils
 ffmpeg
 go
+goenv
 mysql
 nkf
 node
@@ -13,6 +14,7 @@ peco
 pkg-config
 pwgen
 python@2
+tree
 vim
 
 [cask]

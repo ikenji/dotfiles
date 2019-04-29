@@ -1,0 +1,115 @@
+# dein本体。基本は repo に github のリポジトリを設定するだけでよい
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+[[plugins]]
+repo = 'posva/vim-vue'
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+[[plugins]]
+repo = 'slim-template/vim-slim'
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+# 従来は vimrc に書いていたプラグインごとの設定を toml 内で管理できる
+hook_add = '''
+    map <C-n> :NERDTreeToggle<CR>
+    let NERDTreeShowHidden=1
+    let g:NERDTreeNodeDelimiter = "\u00a0"
+'''
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+    let g:syntastic_enable_signs=1
+    let g:syntastic_auto_loc_list=1
+    let g:syntastic_quite_warnings=0
+    let g:syntastic_quiet_messages={"level":"warnings"}
+
+    let g:syntastic_mode_map={ 'mode': 'passive',
+      \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json', 'go'],
+      \ 'passive_filetypes': []
+        \}
+    let g:syntastic_ruby_checkers=['mri']
+    let g:syntastic_javascript_checkers=['jshint']
+    let g:syntastic_php_checkers=['php']
+    let g:syntastic_go_checkers=['golint', 'govet', 'go', 'gotype']
+    let g:syntastic_vue_checkers = ['eslint']
+    let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+    if matchstr(local_eslint, "^\/\\w") == ''
+        let local_eslint = getcwd() . "/" . local_eslint
+    endif
+    if executable(local_eslint)
+        let g:syntastic_vue_eslint_exec = local_eslint
+    endif
+'''
+[[plugins]]
+repo = 'sekel/vim-vue-syntastic'
+
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+    let g:EasyMotion_leader_key='<Space>'
+'''
+
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+    let g:ctrlp_max_height = 15
+'''
+
+
+[[plugins]]
+repo = 'vim-scripts/SQLUtilities'
+hook_add = '''
+    :command SQLF :SQLUFormatter
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'alpaca-tc/vim-endwise.git'
+[[plugins]]
+repo = 'gorodinskiy/vim-coloresque'
+
+
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+    let g:go_fmt_command = 'goimports'
+    let g:go_def_mode = 'godef'
+    let g:go#use_vimproc = 0
+    let g:go_snippet_engine = "minisnip"
+    let g:go_def_mapping_enabled = 0
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_operators = 1
+    let g:go_term_enabled = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_template_autocreate = 0
+    let g:go_gocode_unimported_packages = 1
+    let g:sonictemplate_enable_pattern = 1
+'''
+
+[[plugins]]
+  repo = 'vim-jp/vim-go-extra'

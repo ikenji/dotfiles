@@ -1,91 +1,38 @@
-" ----- dein.vim -----
-if &compatible
-  set nocompatible
+" ----- dein init -----
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+"------ /dein init ------
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+" ----- plugin -----
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  let g:rc_dir    = expand('~/.vim/rc')
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-  call dein#add('nanotech/jellybeans.vim')
-  call dein#add('itchyny/lightline.vim')
-
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('jistr/vim-nerdtree-tabs')
-  call dein#add('ctrlpvim/ctrlp.vim')
-  call dein#add('easymotion/vim-easymotion')
-  call dein#add('vim-scripts/Align')
-  call dein#add('vim-scripts/SQLUtilities')
-  call dein#add('gorodinskiy/vim-coloresque')
-
-  call dein#add('scrooloose/syntastic')
-
-  call dein#add('posva/vim-vue')
-  call dein#add('sekel/vim-vue-syntastic')
-  call dein#add('kchmck/vim-coffee-script')
-  call dein#add('slim-template/vim-slim')
-  call dein#add('fatih/vim-go')
-  call dein#add('Townk/vim-autoclose')
-
-  call dein#add('tpope/vim-rails')
-  call dein#add('tpope/vim-surround')
-  call dein#add('alpaca-tc/vim-endwise.git')
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   call dein#end()
   call dein#save_state()
 endif
-" ----- /dein.vim -----
 
-" ----- plugin config -----
-" Nerdtree
-nnoremap <silent><C-n> :NERDTreeTabsToggle<CR>
-let NERDTreeShowHidden=1
-let g:NERDTreeNodeDelimiter = "\u00a0"
-" EasyMotion
-let g:EasyMotion_leader_key='<Space>'
-" fatih/vim-go
-let g:go_highlight_functions=1
-let g:go_highlight_methods=1
-let g:go_highlight_structs=1
-let g:go_highlight_operators=1
-let g:go_highlight_fields=1
-let g:go_highlight_build_constraints=1
-" scrooloose/syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map={ 'mode': 'passive',
-                        \ 'active_filetypes': ['php', 'ruby', 'javascript', 'json', 'go'],
-                        \ 'passive_filetypes': []
-                        \}
-let g:syntastic_ruby_checkers=['mri']
-let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_php_checkers=['php']
-let g:syntastic_go_checkers=['go', 'golint', 'gotype', 'govet']
-let g:syntastic_quite_warnings=0
-let g:syntastic_quiet_messages={"level":"warnings"}
-" vue
-let g:syntastic_vue_checkers = ['eslint']
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-    let local_eslint = getcwd() . "/" . local_eslint
+if dein#check_install()
+  call dein#install()
 endif
-if executable(local_eslint)
-    let g:syntastic_vue_eslint_exec = local_eslint
-endif
-" ctrlp
-let g:ctrlp_max_height = 15
-" SQL Format
-:command SQLF :SQLUFormatter
-" ----- /plugin config -----
+" ----- /plugin -----
 
-
-" ----- vimconfig -----
+" ----- config -----
 filetype plugin indent on
 syntax enable
-" --- encode ----\
+colorscheme jellybeans "dark2
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
 set backspace=indent,eol,start
@@ -121,14 +68,14 @@ set smartindent   " 改行時に入力された行の末尾に合わせて次の
 set autoread   "外部でファイルに変更がされた場合は読みなおす
 set noundofile "undofileを作らない
 set nobackup   " ファイル保存時にバックアップファイルを作らない
-
 set display=lastline
 set pumheight=10
 set matchtime=1
 set imdisable
-
 set whichwrap=b,s,h,l,<,>,[,]
 set matchpairs& matchpairs+=<:>
+set completeopt=menu,preview
+
 
 " ctrl + g でファイルのパスをクリップボードへコピー
 nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
@@ -136,9 +83,6 @@ nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
 " jjでエスケープ
 inoremap <silent> jj <ESC>
 inoremap <silent> っｊ <ESC>
-
-nnoremap + <C-a>
-nnoremap - <C-x>
 
 " Ctrl + [, Esc で :terminal の insert を抜ける
 tnoremap <Esc> <C-w><S-n>
