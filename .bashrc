@@ -2,7 +2,6 @@ export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$ '
 export LESSCHARSET=utf-8
-export LESSCHARSET=utf-8
 export "EDITOR=vim"
 # export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$ '
 
@@ -12,7 +11,6 @@ source ~/git-completion.bash
 # alias
 alias ll='ls -lahG'
 alias g='git'
-alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 
 bind -x '"\C-r": peco-select-history'
