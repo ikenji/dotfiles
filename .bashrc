@@ -34,6 +34,12 @@ if [ -x `which vim` ];  then
    alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
 
+## Ruby Env
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 ## peco function
 function peco-select-history() {
   export LANG=C

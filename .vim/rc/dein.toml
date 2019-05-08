@@ -20,13 +20,18 @@ repo = 'Townk/vim-autoclose'
 repo = 'scrooloose/nerdtree'
 # 従来は vimrc に書いていたプラグインごとの設定を toml 内で管理できる
 hook_add = '''
-    map <C-n> :NERDTreeToggle<CR>
+"    map <C-n> :NERDTreeToggle<CR>
     let NERDTreeShowHidden=1
     let g:NERDTreeNodeDelimiter = "\u00a0"
 '''
+
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
-
+hook_add = '''
+    map <C-n> <plug>NERDTreeTabsToggle<CR>
+    let NERDTreeShowHidden = 1
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+'''
 
 [[plugins]]
 repo = 'scrooloose/syntastic'

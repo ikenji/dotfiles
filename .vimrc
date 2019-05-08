@@ -33,6 +33,7 @@ endif
 filetype plugin indent on
 syntax enable
 colorscheme jellybeans "dark2
+
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
 set backspace=indent,eol,start

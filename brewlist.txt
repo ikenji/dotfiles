@@ -1,9 +1,9 @@
 ansible
-autoconf
 awscli
 awslogs
 bash-completion
 coreutils
+ctags
 ffmpeg
 go
 goenv
@@ -11,9 +11,9 @@ mysql
 nkf
 node
 peco
-pkg-config
 pwgen
 python@2
+rbenv
 tree
 vim
 
