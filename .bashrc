@@ -11,6 +11,7 @@ source ~/git-completion.bash
 # alias
 alias ll='ls -lahG'
 alias g='git'
+# alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 
 bind -x '"\C-r": peco-select-history'
