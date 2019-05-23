@@ -6,7 +6,7 @@ colorscheme jellybeans "dark2
 " ----config----
 syntax on   "シンタックスカラーリングを設定する
 set t_Co=256
-set guifont="San Francisco Mono"
+set guifont=Cica:h14
 set textwidth=0 " 自動改行しない
 set cursorline "行ハイライト
 set number    "行番号を表示する
