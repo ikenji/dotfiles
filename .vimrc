@@ -32,8 +32,8 @@ endif
 " ----- config -----
 filetype plugin indent on
 syntax enable
-colorscheme jellybeans "dark2
-set guifont=Cica:h12
+" colorscheme jellybeans "dark2
+" set guifont=Cica:h12
 
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
@@ -87,7 +87,6 @@ inoremap <silent> jj <ESC>
 inoremap <silent> っｊ <ESC>
 
 " Ctrl + [, Esc で :terminal の insert を抜ける
-tnoremap <Esc> <C-w><S-n>
 tnoremap <C-[> <C-w><S-n>
 :command T :terminal
 
