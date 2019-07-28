@@ -14,6 +14,8 @@ repo = 'kchmck/vim-coffee-script'
 repo = 'slim-template/vim-slim'
 [[plugins]]
 repo = 'Townk/vim-autoclose'
+[[plugins]]
+repo = 'thinca/vim-quickrun'
 
 
 [[plugins]]
