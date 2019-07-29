@@ -68,3 +68,6 @@ function peco-sshconfig-ssh() {
       ssh -F $conf $host
   fi
 }
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

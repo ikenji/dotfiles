@@ -17,6 +17,18 @@ repo = 'Townk/vim-autoclose'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add='''
+  nnoremap <C-p> :FZFFileList<CR>
+  command! FZFFileList call fzf#run(fzf#wrap({
+              \ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
+              \ 'down': '40%'}))
+'''
+
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -76,12 +88,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-hook_add = '''
-    let g:ctrlp_max_height = 15
-'''
 
 
 [[plugins]]
