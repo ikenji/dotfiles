@@ -13,6 +13,7 @@ alias ll='ls -lahG'
 alias g='git'
 # alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
+alias gore='gore --autoimport'
 
 bind -x '"\C-r": peco-select-history'
 
