@@ -22,11 +22,16 @@ repo = 'junegunn/fzf'
 build = './install --all'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
-hook_add='''
+hook_add = '''
   nnoremap <C-p> :FZFFileList<CR>
+  nnoremap <C-h> :History<CR>
   command! FZFFileList call fzf#run(fzf#wrap({
               \ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
               \ 'down': '40%'}))
+'''
+[[plugins]]
+repo = 'skanehira/vsession'
+hook_add = '''
 '''
 
 
@@ -88,7 +93,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-
 
 [[plugins]]
 repo = 'vim-scripts/SQLUtilities'

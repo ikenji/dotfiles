@@ -1,1 +1,4 @@
 .vim/bundle/*
+.vim/sessions
+.config/git
+.config/gtk-2.0
