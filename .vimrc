@@ -81,6 +81,7 @@ set completeopt=menu,preview
 
 " ctrl + g でファイルのパスをクリップボードへコピー
 nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
+nnoremap <C-j> :GoDef
 
 " jjでエスケープ
 inoremap <silent> jj <ESC>
