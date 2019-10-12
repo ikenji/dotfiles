@@ -35,7 +35,7 @@ syntax enable
 " colorscheme jellybeans "dark2
 " set guifont=Cica:h12
 set hlsearch
-hi Spellbad ctermbg=Red
+hi Spellbad ctermbg=yellow
 
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
