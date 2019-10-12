@@ -34,6 +34,7 @@ filetype plugin indent on
 syntax enable
 " colorscheme jellybeans "dark2
 " set guifont=Cica:h12
+hi Spellbad ctermfg=Red
 
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
@@ -81,7 +82,7 @@ set completeopt=menu,preview
 
 " ctrl + g でファイルのパスをクリップボードへコピー
 nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
-nnoremap <C-j> :GoDef
+nnoremap <C-j> :GoDef<CR>
 
 " jjでエスケープ
 inoremap <silent> jj <ESC>
