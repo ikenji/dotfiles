@@ -34,7 +34,8 @@ filetype plugin indent on
 syntax enable
 " colorscheme jellybeans "dark2
 " set guifont=Cica:h12
-hi Spellbad ctermfg=Red
+set hlsearch
+hi Spellbad ctermbg=Red
 
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp

@@ -35,10 +35,12 @@ if [ -x `which vim` ];  then
 fi
 
 ## Ruby Env
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -e `which rbenv` ];  then
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 ## peco function
 function peco-select-history() {
@@ -68,6 +70,5 @@ function peco-sshconfig-ssh() {
       ssh -F $conf $host
   fi
 }
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
