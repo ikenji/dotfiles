@@ -11,6 +11,7 @@ source ~/git-completion.bash
 # alias
 alias ll='ls -lahG'
 alias g='git'
+alias gitopen='git status -s |  awk -F '\'' '\'' '\''{print $2}'\'' | xargs -o vim -p'
 # alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 alias gore='gore --autoimport'
@@ -71,4 +72,6 @@ function peco-sshconfig-ssh() {
   fi
 }
 
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#eval "$(starship init bash)"
