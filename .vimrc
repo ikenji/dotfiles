@@ -36,6 +36,10 @@ syntax enable
 " set guifont=Cica:h12
 set hlsearch
 hi Spellbad ctermbg=yellow
+hi DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+hi DiffDelete cterm=bold ctermfg=10 ctermbg=52
+hi DiffChange cterm=bold ctermfg=10 ctermbg=17
+hi DiffText   cterm=bold ctermfg=10 ctermbg=21
 
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
