@@ -32,8 +32,10 @@ endif
 " ----- config -----
 filetype plugin indent on
 syntax enable
-" colorscheme jellybeans "dark2
-" set guifont=Cica:h12
+
+colorscheme jellybeans "dark2
+
+set guifont=Cica:h14
 set hlsearch
 hi Spellbad ctermbg=yellow
 hi DiffAdd    cterm=bold ctermfg=10 ctermbg=22
@@ -96,6 +98,9 @@ inoremap <silent> っｊ <ESC>
 " Ctrl + [, Esc で :terminal の insert を抜ける
 tnoremap <C-[> <C-w><S-n>
 :command T :terminal
+cabbrev xmllint %!xmllint --format -
+
+
 
 " ----- indent -----
 " ファイルタイプ別のプラグイン/インデントを有効にする

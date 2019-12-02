@@ -16,6 +16,11 @@ repo = 'slim-template/vim-slim'
 repo = 'Townk/vim-autoclose'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+[[plugins]]
+repo = 'morhetz/gruvbox'
+repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
