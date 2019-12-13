@@ -10,7 +10,16 @@ on_ft = 'toml'
 repo = 'posva/vim-vue'
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
+
 [[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+[[plugins]]
+repo = 'othree/html5.vim'
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+
 repo = 'slim-template/vim-slim'
 [[plugins]]
 repo = 'Townk/vim-autoclose'

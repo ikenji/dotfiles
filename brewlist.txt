@@ -37,6 +37,7 @@ google-japanese-ime
 insomnia
 java8
 karabiner-elements
+kindle
 macvim
 ngrok
 postman
@@ -46,5 +47,7 @@ skype
 slack
 spectacle
 the-unarchiver
+tinypng4mac
 vagrant
 visual-studio-code
+vnote
