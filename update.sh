@@ -1,10 +1,10 @@
 #!/bin/sh
 # $HOMEディレクトリのdotfileをコピーする
 
-dotfiles=(.vimrc .bashrc .bash_profile .inputrc .gvimrc .gitconfig .config .inputrc .vim .irbrc)
+dotfiles=(.vimrc .bashrc .bash_profile .inputrc .gvimrc .config .inputrc .vim .irbrc)
 
 for file in ${dotfiles[@]}; do
-  cp -rf $HOME/$file ./ 
+  cp -rf $HOME/$file ./
 done
 
 brew leaves > brewlist.txt

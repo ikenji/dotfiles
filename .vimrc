@@ -127,3 +127,7 @@ if has("autocmd")
   autocmd FileType go :match goErr /\<err\>/
 endif
 " ----- /indent -----
+if has("multi_lang")
+  language C
+endif
+

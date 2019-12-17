@@ -30,11 +30,11 @@ if [ -x "`which go`" ]; then
 fi
 
 ## Vim Env
-if [ -x `which vim` ];  then
-   alias view='vim -R'
-   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-   alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-fi
+#if [ -x `which vim` ];  then
+#   alias view='vim -R'
+#   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#   alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#fi
 
 ## Ruby Env
 if [ -e `which rbenv` ];  then
