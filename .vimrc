@@ -98,14 +98,17 @@ inoremap <silent> っｊ <ESC>
 " Ctrl + [, Esc で :terminal の insert を抜ける
 tnoremap <C-[> <C-w><S-n>
 :command T :terminal
+:command M :PrevimOpen
+:command MT :TableFormat
 cabbrev xmllint %!xmllint --format -
-
 
 
 " ----- indent -----
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
 if has("autocmd")
+  autocmd BufWritePre * :%s/\s\+$//ge
+
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
   autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType erb         setlocal sw=2 sts=2 ts=2 et

@@ -11,7 +11,8 @@ source ~/git-completion.bash
 # alias
 alias ll='ls -lahG'
 alias g='git'
-alias gitopen='git status -s |  awk -F '\'' '\'' '\''{print $2}'\'' | xargs -o vim -p'
+alias gco='git branch | fzf | xargs git checkout'
+alias gopen='git status -s |  awk -F '\'' '\'' '\''{print $2}'\'' | xargs -o vim -p'
 # alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 alias gore='gore --autoimport'

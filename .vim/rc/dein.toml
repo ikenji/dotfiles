@@ -19,7 +19,24 @@ repo = 'othree/html5.vim'
 repo = 'pangloss/vim-javascript'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+  let g:previm_open_cmd = ' open -a Safari'
+  augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+  augroup END
+'''
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+hook_add = '''
+  let g:vim_markdown_folding_disabled = 1
+'''
+[[plugins]]
+repo = 'godlygeek/tabular'
 
+[[plugins]]
 repo = 'slim-template/vim-slim'
 [[plugins]]
 repo = 'Townk/vim-autoclose'
