@@ -3,3 +3,4 @@
 .config/git
 .config/gtk-2.0
 .config/vnote
+.vim/plugged
