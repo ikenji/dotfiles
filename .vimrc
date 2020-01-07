@@ -22,16 +22,26 @@ call plug#begin()
   Plug 'mattn/vim-maketable'
   Plug 'Townk/vim-autoclose'
 
-	"" lsp
+  Plug 'othree/html5.vim'
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'pangloss/vim-javascript'
+  Plug 'posva/vim-vue'
+  Plug 'sekel/vim-vue-syntastic'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'slim-template/vim-slim'
+
+  Plug 'mattn/vim-goimports'
+
+  "" lsp
+  Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/vim-lsp'
-
-  Plug 'mattn/vim-lsp-settings'
-	Plug 'mattn/vim-goimports'
-	"" /lsp
+  "" /lsp
 call plug#end()
+
+colorscheme jellybeans
 
 set number
 set hlsearch
@@ -49,6 +59,8 @@ set noerrorbells
 set laststatus=2
 set showmatch
 set incsearch
+set ignorecase
+set smartcase
 set tabstop=2
 set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
@@ -80,7 +92,8 @@ nnoremap <C-g> :<C-u>echo "[copied]" . expand('%') \| let @+=expand('%')<CR>
 tnoremap <C-[> <C-w><S-n>
 
 :command T :terminal
-:command LSP :LspInstallServer
+:command LSPI :LspInstallServer
+:command LSP :LspStatus
 cabbrev xmllint %!xmllint --format -
 
 "" plugin setting
@@ -119,7 +132,9 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <f2> <plug>(lsp-rename)
+  nmap <buffer> lc <plug>(lsp-document-diagnostics)
+  nmap <buffer> lf <plug>(lsp-document-format)
+  nmap <buffer> lr <plug>(lsp-rename)
   inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
 
@@ -133,8 +148,8 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 300
-let g:lsp_text_edit_enabled = 1
+let g:lsp_text_edit_enabled = 0
+" let g:asyncomplete_popup_delay = 300
 " /lsp
 
 
