@@ -1,7 +1,3 @@
-if has("multi_lang")
-  language C
-endif
-
 call plug#begin()
   Plug 'nanotech/jellybeans.vim'
 
@@ -12,12 +8,13 @@ call plug#begin()
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'thinca/vim-quickrun'
-  Plug 'vim-scripts/SQLUtilities'
+  Plug 'mattn/vim-sqlfmt'
   Plug 'tpope/vim-surround'
   Plug 'AndrewRadev/linediff.vim'
 
   Plug 'previm/previm'
   Plug 'plasticboy/vim-markdown'
+  Plug 'skanehira/preview-markdown.vim'
   Plug 'godlygeek/tabular'
   Plug 'mattn/vim-maketable'
   Plug 'Townk/vim-autoclose'
@@ -31,6 +28,7 @@ call plug#begin()
   Plug 'slim-template/vim-slim'
 
   Plug 'mattn/vim-goimports'
+  Plug 'mattn/vim-goaddtags'
 
   "" lsp
   Plug 'mattn/vim-lsp-settings'
@@ -40,6 +38,10 @@ call plug#begin()
   Plug 'prabirshrestha/vim-lsp'
   "" /lsp
 call plug#end()
+
+if has("multi_lang")
+  language C
+endif
 
 colorscheme jellybeans
 
@@ -99,10 +101,13 @@ cabbrev xmllint %!xmllint --format -
 "" plugin setting
 " previm
 let g:previm_open_cmd = ' open -a Safari'
+let g:previm_show_header = 0
 :command M :PrevimOpen
 :command Markdown :PrevimOpen
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+" previm markdown
+let g:preview_markdown_vertical = 1
 " fzf
 nnoremap <C-p> :FZFFileList<CR>
 nnoremap <C-h> :History<CR>
@@ -114,8 +119,8 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " easymotion
 let g:EasyMotion_leader_key='<Space>'
-" sqlutilities
-:command SQLF :SQLUFormatter
+" preview markdown
+:command  PM :PreviewMarkdown
 " tableformat
 :command TF :TableFormat
 " maketable

@@ -23,8 +23,10 @@ tree
 vim
 
 [cask]
+chromedriver
 clipy
 coteditor
+cyberduck
 db-browser-for-sqlite
 docker
 dropbox
