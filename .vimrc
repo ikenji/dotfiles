@@ -50,6 +50,7 @@ set hlsearch
 set clipboard=unnamed,autoselect
 set enc=utf-8
 set fencs=utf-8,sjis,euc-jp
+set fileformats=unix,dos,mac
 set noswapfile
 set autoread
 set backspace=indent,eol,start
@@ -66,11 +67,14 @@ set smartcase
 set tabstop=2
 set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set whichwrap=b,s,h,l,<,>,[,],~
 set imdisable
 
 au FileType html        setlocal sw=2 sts=2 ts=2 et
 au FileType erb         setlocal sw=2 sts=2 ts=2 et
 au FileType ruby        setlocal sw=2 sts=2 ts=2 et
+au FileType yaml        setlocal sw=2 sts=2 ts=2 et
+au FileType yal         setlocal sw=2 sts=2 ts=2 et
 au FileType php         setlocal sw=2 sts=2 ts=2 et
 au FileType slim        setlocal sw=2 sts=2 ts=2 et
 au FileType js          setlocal sw=2 sts=2 ts=2 et
@@ -128,18 +132,13 @@ cabbrev MT :MakeTable
 " linediff
 cabbrev LD :Linediff
 
-" lsp
-if empty(globpath(&rtp, 'autoload/lsp.vim'))
-  finish
-endif
-
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   nmap <buffer> gd <plug>(lsp-definition)
   nmap <buffer> lc <plug>(lsp-document-diagnostics)
   nmap <buffer> lf <plug>(lsp-document-format)
-  nmap <buffer> lr <plug>(lsp-rename)
+  " nmap <buffer> lr <plug>(lsp-rename)
   inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
 
@@ -153,10 +152,8 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 0
 let g:lsp_text_edit_enabled = 0
-" let g:asyncomplete_popup_delay = 300
-" /lsp
-
 
 "" function
 function! RTrim()
