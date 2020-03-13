@@ -2,6 +2,7 @@ export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$ '
 export LESSCHARSET=utf-8
+export HISTSIZE=50000
 export "EDITOR=vim"
 # export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$ '
 
@@ -12,7 +13,9 @@ source ~/git-completion.bash
 alias ll='ls -lahG'
 alias g='git'
 alias gco='git branch | fzf | xargs git checkout'
-alias gopen='git status -s |  awk -F '\'' '\'' '\''{print $2}'\'' | xargs -o vim -p'
+alias gopen='git status -s | awk {'\'' print $2 '\''} | peco | xargs -o vim -p'
+alias gopena='git status -s | awk {'\'' print $2 '\''} | xargs -o vim -p'
+
 # alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 alias gore='gore --autoimport'
@@ -44,6 +47,13 @@ if [ -e `which rbenv` ];  then
   eval "$(rbenv init -)"
 fi
 
+## Python Env
+if [ -e `which pyenv` ];  then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="${PYENV_ROOT}/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
 ## peco function
 function peco-select-history() {
   export LANG=C
@@ -72,7 +82,4 @@ function peco-sshconfig-ssh() {
       ssh -F $conf $host
   fi
 }
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-#eval "$(starship init bash)"

@@ -16,6 +16,7 @@ node
 peco
 postgresql
 pwgen
+pyenv
 python@2
 rbenv
 starship
@@ -23,6 +24,7 @@ tree
 vim
 
 [cask]
+anki
 chromedriver
 clipy
 coteditor
@@ -41,6 +43,7 @@ java8
 karabiner-elements
 kindle
 macvim
+mark-text
 ngrok
 postman
 sketch
