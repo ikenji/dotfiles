@@ -4,3 +4,5 @@ set cmdheight=2
 set guifont=Cica:h14
 set ignorecase
 set smartcase
+set guioptions=c
+set wrapscan

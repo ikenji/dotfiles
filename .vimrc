@@ -5,9 +5,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 
 Plug 'easymotion/vim-easymotion'
+Plug 'thinca/vim-quickrun'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'thinca/vim-quickrun'
 Plug 'mattn/vim-sqlfmt'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/linediff.vim'
@@ -46,8 +46,10 @@ if has("multi_lang")
 endif
 
 colorscheme jellybeans
-
+set synmaxcol=320
+set ttimeoutlen=0
 set number
+set wrapscan
 set hlsearch
 set gdefault
 set clipboard=unnamed,autoselect
@@ -73,7 +75,6 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 set whichwrap=b,s,h,l,<,>,[,],~
 set imdisable
 set updatetime=250
-
 
 au FileType html        setlocal sw=2 sts=2 ts=2 et
 au FileType erb         setlocal sw=2 sts=2 ts=2 et
@@ -149,6 +150,11 @@ function! s:on_lsp_buffer_enabled() abort
 				inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
 
+augroup vimrc-highlight
+  autocmd!
+  autocmd Syntax Ruby if 10000 < line('$') | syntax sync minlines=100 | endif
+augroup END
+
 augroup lsp_install
 				au!
 				autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
@@ -163,8 +169,6 @@ let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
-
-" let g:lsp_settings = { 'solargraph': { 'disabled': 1 } }
 
 "" function
 function! RTrim()

@@ -4,3 +4,5 @@
 .config/gtk-2.0
 .config/vnote
 .vim/plugged
+.config/AWSVPNClient/
+.config/octave/

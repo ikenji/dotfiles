@@ -10,15 +10,20 @@ export "EDITOR=vim"
 source ~/git-prompt.sh
 source ~/git-completion.bash
 # alias
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
 alias ll='ls -lahG'
 alias g='git'
 alias gco='git branch | fzf | xargs git checkout'
 alias gopen='git status -s | awk {'\'' print $2 '\''} | peco | xargs -o vim -p'
 alias gopena='git status -s | awk {'\'' print $2 '\''} | xargs -o vim -p'
+alias octave='/usr/local/octave/3.8.0/bin/octave-3.8.0'
 
 # alias irb='irb --noreadline'
 alias sshf='peco-sshconfig-ssh $@'
 alias gore='gore --autoimport'
+alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/sbin brew"
 
 bind -x '"\C-r": peco-select-history'
 
@@ -47,12 +52,12 @@ if [ -e `which rbenv` ];  then
   eval "$(rbenv init -)"
 fi
 
-## Python Env
-if [ -e `which pyenv` ];  then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH="${PYENV_ROOT}/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
+# Python Env
+ if [ -e `which pyenv` ];  then
+   # export PYENV_ROOT="${HOME}/.pyenv"
+   # export PATH="${PYENV_ROOT}/bin:$PATH"
+   eval "$(pyenv init -)"
+ fi
 
 ## peco function
 function peco-select-history() {
