@@ -1,25 +1,27 @@
+let $PATH = "~/.pyenv/shims:".$PATH
+
 call plug#begin()
 Plug 'nanotech/jellybeans.vim'
 
-Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/ctrlp-matchfuzzy'
+
 
 Plug 'easymotion/vim-easymotion'
 Plug 'thinca/vim-quickrun'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/linediff.vim'
 
-Plug 'airblade/vim-gitgutter'
 Plug 'previm/previm'
-Plug 'plasticboy/vim-markdown'
-Plug 'skanehira/preview-markdown.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 Plug 'mattn/vim-maketable'
 Plug 'Townk/vim-autoclose'
 Plug 'cohama/lexima.vim'
+Plug 'codota/tabnine'
 
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -28,9 +30,19 @@ Plug 'posva/vim-vue'
 Plug 'sekel/vim-vue-syntastic'
 Plug 'kchmck/vim-coffee-script'
 Plug 'slim-template/vim-slim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
 
 Plug 'mattn/vim-goimports'
 Plug 'mattn/vim-goaddtags'
+Plug 'mattn/emmet-vim'
+Plug 'tomtom/tcomment_vim'
+
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'gorodinskiy/vim-coloresque'
 
 " lsp
 Plug 'mattn/vim-lsp-settings'
@@ -39,6 +51,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 " /lsp
+"
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'ruby'] }
 call plug#end()
 
 if has("multi_lang")
@@ -49,6 +63,8 @@ colorscheme jellybeans
 set synmaxcol=320
 set ttimeoutlen=0
 set number
+set ma
+set nf=
 set wrapscan
 set hlsearch
 set gdefault
@@ -79,7 +95,7 @@ set updatetime=250
 au FileType html        setlocal sw=2 sts=2 ts=2 et
 au FileType erb         setlocal sw=2 sts=2 ts=2 et
 au FileType ruby        setlocal sw=2 sts=2 ts=2 et
-au FileType python        setlocal sw=4 sts=4 ts=4 et
+au FileType python      setlocal sw=4 sts=4 ts=4 et
 au FileType yaml        setlocal sw=2 sts=2 ts=2 et
 au FileType yal         setlocal sw=2 sts=2 ts=2 et
 au FileType php         setlocal sw=2 sts=2 ts=2 et
@@ -90,11 +106,15 @@ au FileType javascript  setlocal sw=2 sts=2 ts=2 et
 au FileType coffee      setlocal sw=2 sts=2 ts=2 et
 au FileType css         setlocal sw=2 sts=2 ts=2 et
 au FileType scss        setlocal sw=2 sts=2 ts=2 et
+au FileType json        setlocal sw=2 sts=2 ts=2 et
 au FileType sh          setlocal sw=2 sts=2 ts=2 et
 au FileType go          setlocal sw=4 ts=4 sts=4 noet
 au FileType go :highlight goErr cterm=bold gui=BOLD ctermfg=197 guifg=#CC4635
 au FileType go :match goErr /\<err\>/
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+hi def link markdownBold NONE
+hi def link markdownBoldItalic NONE
+hi def link markdownItalic NONE
 
 " convert from jj to escape
 inoremap <silent> jj <ESC>
@@ -107,41 +127,51 @@ tnoremap <C-[> <C-w><S-n>
 :command T :terminal
 :command LSPI :LspInstallServer
 :command LSP :LspStatus
+:command P :Prettier
+:command SQLF :SQLFmt
+:command JSONF :%!jq .
 cabbrev xmllint %!xmllint --format -
 let g:ruby_path = ""
 
 "" plugin setting
 " previm
-let g:previm_open_cmd = ' open -a Safari'
+let g:previm_open_cmd = 'open -a Safari'
 let g:previm_show_header = 0
 :command M :PrevimOpen
 :command Markdown :PrevimOpen
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+let g:previm_disable_default_css = 1
+let g:previm_custom_css_path = '~/src/dotfiles/markdown.css'
 " previm markdown
 let g:preview_markdown_vertical = 1
-" fzf
-nnoremap <C-p> :FZFFileList<CR>
-nnoremap <C-h> :History<CR>
-command! FZFFileList call fzf#run(fzf#wrap({
-												\ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
-												\ 'down': '20%'}))
-" nerdtree
-nnoremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
+nnoremap <C-h> :CtrlPBuffer<CR>
+
+" ctrlp -
+let g:ctrlp_match_func = { 'match' : 'ctrlp_matchfuzzy#matcher' }
+
+" Fern - File Tree
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+let g:fern#default_hidden=1
+
 " easymotion
 let g:EasyMotion_leader_key='<Space>'
 " preview markdown
-:command  PM :PreviewMarkdown
+"" :command  PM :PreviewMarkdown
 " tableformat
 :command TF :TableFormat
 " maketable
 cabbrev MT :MakeTable
 " linediff
 cabbrev LD :Linediff
+" vim-react-snippets
+let g:UltiSnipsExpandTrigger="<C-e>"
+" QuickRun
+nnoremap \r :QuickRun<CR>
+vnoremap \r :QuickRun<CR>
 
 function! s:on_lsp_buffer_enabled() abort
-				setlocal omnifunc=lsp#complete
+				setlocal omnifunc=lsp"complete
 				setlocal signcolumn=yes
 				nmap <buffer> gd <plug>(lsp-definition)
 				nmap <buffer> gc <plug>(lsp-document-diagnostics)
@@ -173,10 +203,7 @@ let g:lsp_text_edit_enabled = 0
 "" function
 function! RTrim()
 				let s:tmppos = getpos(".")
-				if &filetype == "markdown"
-								%s/\v(\s{2})?(\s+)?$/\1/e
-								match Underlined /\s\{2}$/
-				else
+				if &filetype != "markdown"
 								%s/\v\s+$//e
 				endif
 				call setpos(".", s:tmppos)
@@ -186,7 +213,7 @@ if &filetype != "markdown"
 endif
 
 function! ZenkakuSpace()
-				highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+				highlight ZenkakuSpace cterm=reverse ctermfg=DarkGray gui=reverse guifg=DarkGray
 endfunction
 
 if has('syntax')
