@@ -1,37 +1,3 @@
 [user]
-  name = ichi
-  email = ichihashi@giftee.co
-[core]
-  autocrlf = input
-  quotepath = false
-  excludesfile = /Users/ichihashi_kenji/.gitignore_global
-  editor = vim -c \"set fenc=utf-8\"
-[push]
-  default = simple
-[code]
-  quotepath = false
-[gui]
-  encoding = UTF-8
-[alias]
-# git diff --shortstat `git log --pretty=%H --since 'last month' | tail -n 1`
-  s = status -s
-  a = add
-  c = commit -v
-  co = checkout
-  l = log --oneline
-  lname = log -p -m --name-only
-  b = branch
-  d = diff --ignore-space-change --word-diff
-  bsort = for-each-ref --format='%(authordate) %(refname)' --sort=-committerdate refs/heads refs/remotes
-[credential]
-  helper = cache --timeout=3600
-[commit]
-  verbose = true
-[rebase]
-  autosquash = true
-
-[grep]
-	lineNumber = true
-	patternType = extended
-[pull]
-	rebase = false
+	name = ichi
+	email = ichihashi@giftee.co

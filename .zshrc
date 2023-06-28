@@ -3,6 +3,8 @@
 
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)
+source ~/.zsh/.zshrc_ex
+
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

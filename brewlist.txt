@@ -8,6 +8,7 @@ nodebrew
 pwgen
 python@3.10
 rbenv
+sqlparse
 terraform
 tree
 vim
