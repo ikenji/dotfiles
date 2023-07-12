@@ -4,10 +4,12 @@ fzf
 go
 jq
 jump
+node
 nodebrew
 pwgen
 python@3.10
 rbenv
+ripgrep
 sqlparse
 terraform
 tree

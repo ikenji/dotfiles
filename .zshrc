@@ -1,21 +1,21 @@
-# Git
-# @ref: https://zenn.dev/kyome/articles/ff5641b5453e6b
-
-source ~/.zsh/git-prompt.sh
-fpath=(~/.zsh $fpath)
 source ~/.zsh/.zshrc_ex
 
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-autoload -Uz compinit && compinit -u
-GIT_PS1_SHOWDIRTYSTATE=true
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+source ~/.zsh/git-prompt.sh
 setopt PROMPT_SUBST
 PS1='%F{green}ichi: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 \$ '
+autoload -Uz compinit && compinit -u
 
 # ruby
 eval "$(rbenv init - zsh)"
+
+# Node
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # gcloud
 # source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
